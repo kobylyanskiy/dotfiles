@@ -18,3 +18,12 @@ vim.keymap.set("n", "<leader>8", "8gt")
 vim.keymap.set("n", "<leader>9", "9gt")
 vim.keymap.set("n", "<leader>0", ":tablast<cr>")
 
+
+vim.keymap.set("n", "<leader>e", '<Cmd>Neotree toggle<CR>', {silent = true})
+vim.keymap.set("n", "<leader>t", '<Cmd>ToggleTerm<CR>', {silent = true})
+vim.keymap.set("n", "<leader>doc", '<Cmd>GoDoc<CR>', {silent = true})
+vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
+
+vim.keymap.set("n", "<leader>gs", "<Cmd>Telescope git_status<CR>")
+
+vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
