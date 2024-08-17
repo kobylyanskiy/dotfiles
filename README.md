@@ -1,4 +1,9 @@
-dotfiles
-========
+dry run:
+```bash
+stow -nSv --target $HOME .
+```
 
-dotfiles
+sync links:
+```bash
+stow --target $HOME .
+```
