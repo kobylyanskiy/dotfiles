@@ -21,7 +21,6 @@ zinit light Aloxaf/fzf-tab
 # add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
 zinit snippet OMZP::aws
 
 
@@ -42,7 +41,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=selected-bg:#494d64 \
 --multi"
 source <(fzf --zsh)
-eval "$(logcli --completion-script-zsh)"
+# eval "$(logcli --completion-script-zsh)"
 
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
@@ -70,7 +69,12 @@ export PATH="$PATH:/Users/kirill/.local/bin"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
-# source <(fzf --zsh)
+# history
+HISTFILE=~/.zsh_history
+HISTSIZE=999999999
+SAVEHIST=$HISTSIZE
+
+source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
