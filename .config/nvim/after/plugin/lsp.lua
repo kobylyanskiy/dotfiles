@@ -1,21 +1,20 @@
-local lsp = require('lsp-zero')
+local lsp = require("lsp-zero")
 local km, l, api = vim.keymap.set, vim.lsp, vim.api
 lsp.extend_lspconfig()
 
 local lspconfig = require("lspconfig")
-local cmp = require('cmp')
---require('lspconfig').lua_ls.setup({})
+local cmp = require("cmp")
 
 lspconfig.intelephense.setup({})
-lspconfig.terraformls.setup {}
-lspconfig.tflint.setup {}
+lspconfig.terraformls.setup({})
+lspconfig.tflint.setup({})
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
-	ensure_installed = { 'terraformls', 'jsonnet_ls', 'gopls', 'pylsp', },
+require("mason").setup({})
+require("mason-lspconfig").setup({
+	ensure_installed = { "terraformls", "jsonnet_ls", "gopls", "pylsp" },
 	handlers = {
 		lsp.default_setup,
-	}
+	},
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -32,11 +31,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		km("n", "<leader>D", l.buf.type_definition, bufopts)
 		km("n", "gr", l.buf.references, bufopts)
 		km({ "n", "v" }, "<leader>ca", l.buf.code_action, bufopts)
-		-- km("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
 		km("n", "L", vim.lsp.buf.hover, bufopts)
 	end,
 })
-
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*.tf", "*.tfvars", "*.lua" },
@@ -46,16 +43,16 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 cmp.setup({
-	preselect = 'item',
+	preselect = "item",
 	completion = {
-		completeopt = 'menu,menuone,noinsert'
+		completeopt = "menu,menuone,noinsert",
 	},
 	mapping = cmp.mapping.preset.insert({
-		['<CR>'] = cmp.mapping.confirm({ select = false }),
+		["<CR>"] = cmp.mapping.confirm({ select = false }),
 	}),
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 lspconfig.gopls.setup({
 	capabilities = capabilities,
 	settings = {

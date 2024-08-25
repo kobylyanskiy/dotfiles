@@ -1,36 +1,37 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
-return require('packer').startup(function(use)
+return require("packer").startup(function(use)
 	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
-	use 'f-person/git-blame.nvim'
+	use("wbthomason/packer.nvim")
+	use("f-person/git-blame.nvim")
 
 	use({
 		"iamcco/markdown-preview.nvim",
-		run = function() vim.fn["mkdp#util#install"]() end,
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	})
 
-	use {
+	use({
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
-		requires = { { "nvim-lua/plenary.nvim" } }
-	}
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 
-	use { 'stevearc/dressing.nvim' }
-	use { "OXY2DEV/helpview.nvim" }
+	use({ "stevearc/dressing.nvim" })
+	use({ "OXY2DEV/helpview.nvim" })
 
-
-	use {
-		'rmagatti/auto-session',
+	use({
+		"rmagatti/auto-session",
 		config = function()
-			require("auto-session").setup {
+			require("auto-session").setup({
 				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-			}
-		end
-	}
+			})
+		end,
+	})
 
 	use({
 		"stevearc/quicker.nvim",
@@ -39,40 +40,40 @@ return require('packer').startup(function(use)
 		end,
 	})
 
-	use {
-		'nvim-telescope/telescope.nvim',
+	use({
+		"nvim-telescope/telescope.nvim",
 		requires = {
-			{ 'nvim-lua/plenary.nvim' },
+			{ "nvim-lua/plenary.nvim" },
 			{ "ANGkeith/telescope-terraform-doc.nvim" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 		},
 		--  config = function()
 		-- require("telescope").load_extension("live_grep_args")
 		--  end
-	}
+	})
 
-	use {
+	use({
 		"smjonas/inc-rename.nvim",
 		config = function()
 			require("inc_rename").setup()
 		end,
-	}
+	})
 
-	use {
+	use({
 		"folke/zen-mode.nvim",
 		opts = {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
-		}
-	}
+		},
+	})
 
-	use {
+	use({
 		"0xstepit/flow.nvim",
 		opts = {},
-	}
+	})
 
-	use { "akinsho/toggleterm.nvim", tag = '*' }
+	use({ "akinsho/toggleterm.nvim", tag = "*" })
 
 	use({
 		"stevearc/conform.nvim",
@@ -82,33 +83,43 @@ return require('packer').startup(function(use)
 	})
 
 	-- Lua
-	use {
+	use({
 		"folke/persistence.nvim",
 		event = "BufReadPre", -- this will only start session saving when an actual file was opened
 		opts = {
 			-- add any custom options here
-		}
-	}
+		},
+	})
 
-	use {
-		"catppuccin/nvim", as = "catppuccin",
-	}
-	use { 'junegunn/limelight.vim' }
+	use({
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup()
+		end,
+	})
 
-	use {
-		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-	}
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+	})
+	use({ "junegunn/limelight.vim" })
 
-	use {
-		'kristijanhusak/vim-dadbod-ui',
-		requires = { 'tpope/vim-dadbod' }
-	}
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "nvim-tree/nvim-web-devicons", opt = true },
+	})
 
-	use {
-		'ibhagwan/fzf-lua',
-		requires = { "nvim-tree/nvim-web-devicons" }
-	}
+	use("nvim-tree/nvim-web-devicons")
+
+	use({
+		"kristijanhusak/vim-dadbod-ui",
+		requires = { "tpope/vim-dadbod" },
+	})
+
+	use({
+		"ibhagwan/fzf-lua",
+		requires = { "nvim-tree/nvim-web-devicons" },
+	})
 
 	-- use {
 	--   'VonHeikemen/fine-cmdline.nvim',
@@ -118,7 +129,7 @@ return require('packer').startup(function(use)
 	-- }
 
 	-- lazy.nvim
-	use {
+	use({
 		"folke/noice.nvim",
 		opts = {
 			-- add any options here
@@ -129,10 +140,10 @@ return require('packer').startup(function(use)
 			-- OPTIONAL:
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
-		}
-	}
+		},
+	})
 
-	use {
+	use({
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
@@ -140,23 +151,23 @@ return require('packer').startup(function(use)
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 		},
-	}
+	})
 
-	use { 'aquasecurity/vim-trivy' }
-	use {
-		'ggandor/leap.nvim',
+	use({ "aquasecurity/vim-trivy" })
+	use({
+		"ggandor/leap.nvim",
 		requires = {
-			'tpope/vim-repeat',
-		}
-	}
+			"tpope/vim-repeat",
+		},
+	})
 
-	use {
-		'nvim-treesitter/nvim-treesitter',
+	use({
+		"nvim-treesitter/nvim-treesitter",
 		run = function()
-			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
-	}
+	})
 
 	use({
 		"nvim-treesitter/nvim-treesitter-textobjects",
@@ -164,20 +175,27 @@ return require('packer').startup(function(use)
 		requires = "nvim-treesitter/nvim-treesitter",
 	})
 
-	use {
+	use({
 		"folke/which-key.nvim",
 		config = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 1000
-			require("which-key").setup {
+			require("which-key").setup({
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below
-			}
-		end
-	}
+			})
+		end,
+	})
 
-	use {
+	use({
+		"stevearc/aerial.nvim",
+		config = function()
+			require("aerial").setup()
+		end,
+	})
+
+	use({
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 		requires = {
@@ -185,81 +203,64 @@ return require('packer').startup(function(use)
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		}
-	}
+		},
+	})
 
-	use('nvim-treesitter/playground')
+	use("nvim-treesitter/playground")
 
-	use('mbbill/undotree')
-	use('tpope/vim-fugitive')
+	use("mbbill/undotree")
+	use("tpope/vim-fugitive")
 	-- use('rcarriga/nvim-notify')
 
+	use("ray-x/go.nvim")
+	use("ray-x/guihua.lua") -- recommended if need floating window support
 
-	use 'ray-x/go.nvim'
-	use 'ray-x/guihua.lua' -- recommended if need floating window support
-
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v3.x",
 		requires = {
 			--- Uncomment the two plugins below if you want to manage the language servers from neovim
 			-- {'williamboman/mason.nvim'},
 			-- {'williamboman/mason-lspconfig.nvim'},
 
 			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },
+			{ "neovim/nvim-lspconfig" },
 			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'L3MON4D3/LuaSnip' },
-		}
-	}
+			{ "hrsh7th/nvim-cmp" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "L3MON4D3/LuaSnip" },
+		},
+	})
 
-	use {
+	use({
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
-	}
+	})
 
-	use {
+	use({
 		"williamboman/mason.nvim",
 		opts = {
 			ensure_installed = {
 				"gopls",
 			},
 		},
-	}
+	})
 
-	use {
-		'numToStr/Comment.nvim',
+	use({
+		"numToStr/Comment.nvim",
 		config = function()
-			require('Comment').setup()
-		end
-	}
+			require("Comment").setup()
+		end,
+	})
 
-	use "lukas-reineke/indent-blankline.nvim"
+	use("lukas-reineke/indent-blankline.nvim")
 
-	use {
+	use({
 		"nvim-telescope/telescope-file-browser.nvim",
-		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-	}
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	})
 
-	use "ntpeters/vim-better-whitespace"
+	use("ntpeters/vim-better-whitespace")
 
-	use "github/copilot.vim"
-
-	use {
-		"CopilotC-Nvim/CopilotChat.nvim",
-		branch = "canary",
-		requires = {
-			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-		},
-		opts = {
-			debug = true, -- Enable debugging
-			-- See Configuration section for rest
-		},
-		-- See Commands section for default commands if you want to lazy load on them
-	}
-
-	use "lewis6991/gitsigns.nvim"
+	use("lewis6991/gitsigns.nvim")
 end)

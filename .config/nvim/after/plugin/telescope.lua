@@ -1,21 +1,16 @@
 local telescope = require("telescope")
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
 -- local fb_actions = require "telescope._extensions.file_browser.actions"
 
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<leader>pr', builtin.registers, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
+vim.keymap.set("n", "<leader>pr", builtin.registers, {})
+vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 
-vim.keymap.set('n', '<leader>ps', function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") });
+vim.keymap.set("n", "<leader>ps", function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>fg",
-	":Telescope live_grep_args<CR>",
-	{ noremap = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep_args<CR>", { noremap = true })
 
 local focus_preview = function(prompt_bufnr)
 	local action_state = require("telescope.actions.state")
@@ -31,26 +26,40 @@ local focus_preview = function(prompt_bufnr)
 	-- api.nvim_set_current_win(winid)
 end
 
-
-require("telescope").load_extension("live_grep_args")
-require("telescope").load_extension("file_browser")
-
-
-
 telescope.setup({
 	defaults = {
-		extensions = {
-			live_grep_args = {
-				mappings = {
-					i = {
-						["<Tab>"] = focus_preview,
-					},
-					n = {
-						["<Tab>"] = focus_preview,
-					},
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"-uu", -- **This is the setting not being respected**
+		},
+	},
+	pickers = {
+		live_grep = {
+			additional_args = function(opts)
+				return { "--hidden" }
+			end,
+		},
+	},
+	extensions = {
+		live_grep_args = {
+			mappings = {
+				i = {
+					["<Tab>"] = focus_preview,
+				},
+				n = {
+					["<Tab>"] = focus_preview,
 				},
 			},
 		},
-		layout_strategy = "flex",
 	},
+	layout_strategy = "flex",
 })
+
+require("telescope").load_extension("live_grep_args")
+require("telescope").load_extension("file_browser")
