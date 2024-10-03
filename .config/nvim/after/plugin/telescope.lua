@@ -1,5 +1,6 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local actions = require("telescope.actions")
 -- local fb_actions = require "telescope._extensions.file_browser.actions"
 
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
@@ -11,6 +12,11 @@ vim.keymap.set("n", "<leader>ps", function()
 end)
 
 vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep_args<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>giw",
+	":Telescope live_grep_args default_text=<c-r>=expand('<cword>')<CR><CR>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<leader>ga", ":Git fetch --all<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>grom", ":Git rebase origin/master<CR>", { noremap = true })
 
 local focus_preview = function(prompt_bufnr)
 	local action_state = require("telescope.actions.state")
@@ -38,13 +44,38 @@ telescope.setup({
 			"--smart-case",
 			"-uu", -- **This is the setting not being respected**
 		},
+		file_ignore_patterns = { "node_modules", ".git", ".cache", ".terraform", "venv" },
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.55,
+			},
+			width = 0.87,
+			height = 0.80,
+		},
+		layout_strategy = "flex",
+		prompt_prefix = "   ",
+		selection_caret = " ",
+		entry_prefix = " ",
+		border = true,
+		borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
+		color_devicons = true,
 	},
 	pickers = {
 		live_grep = {
 			additional_args = function(opts)
-				return { "--hidden" }
+				return {}
 			end,
 		},
+		buffers = {
+			sort_mru = true,
+		},
+	},
+	fzf = {
+		fuzzy = true,             -- false will only do exact matching
+		override_generic_sorter = true, -- override the generic sorter
+		override_file_sorter = true, -- override the file sorter
+		case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 	},
 	extensions = {
 		live_grep_args = {
@@ -57,9 +88,32 @@ telescope.setup({
 				},
 			},
 		},
+		["ui-select"] = {
+			-- layout_strategy = "flex",
+			layout_config = {
+				width = 100,
+				height = 35,
+			},
+
+		}
 	},
-	layout_strategy = "flex",
+	-- layout_strategy = "flex",
+	-- extensions_list = { "themes", "terms" },
 })
 
-require("telescope").load_extension("live_grep_args")
-require("telescope").load_extension("file_browser")
+telescope.load_extension("fzf")
+telescope.load_extension("live_grep_args")
+telescope.load_extension("file_browser")
+telescope.load_extension("ui-select")
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		if vim.fn.argv(0) == "" then
+			require("telescope.builtin").find_files()
+		end
+
+		-- if vim.fn.argv(0) == "." then
+		-- 	require("neotree").open()
+		-- end
+	end,
+})

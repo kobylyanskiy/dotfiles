@@ -15,23 +15,25 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		requires = { { "nvim-lua/plenary.nvim" } },
-	})
+	-- use({
+	-- 	"ThePrimeagen/harpoon",
+	-- 	branch = "harpoon2",
+	-- 	requires = { { "nvim-lua/plenary.nvim" } },
+	-- })
 
 	use({ "stevearc/dressing.nvim" })
 	use({ "OXY2DEV/helpview.nvim" })
+	use { 'nvim-telescope/telescope-ui-select.nvim' }
+	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
 
-	use({
-		"rmagatti/auto-session",
-		config = function()
-			require("auto-session").setup({
-				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-			})
-		end,
-	})
+	-- use({
+	-- 	"rmagatti/auto-session",
+	-- 	-- config = function()
+	-- 	-- 	require("auto-session").setup({
+	-- 	-- 		auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+	-- 	-- 	})
+	-- 	-- end,
+	-- })
 
 	use({
 		"stevearc/quicker.nvim",
@@ -40,11 +42,25 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use "github/copilot.vim"
+	use {
+		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "canary",
+		requires = {
+			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+		},
+		opts = {
+			debug = true, -- Enable debugging
+			-- See Configuration section for rest
+		},
+		-- See Commands section for default commands if you want to lazy load on them
+	}
+
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
-			{ "ANGkeith/telescope-terraform-doc.nvim" },
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 		},
 		--  config = function()
@@ -59,21 +75,25 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"folke/zen-mode.nvim",
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
-	})
-
-	use({
-		"0xstepit/flow.nvim",
-		opts = {},
-	})
+	-- use({
+	-- 	"folke/zen-mode.nvim",
+	-- 	opts = {
+	-- 		-- your configuration comes here
+	-- 		-- or leave it empty to use the default settings
+	-- 		-- refer to the configuration section below
+	-- 	},
+	-- })
 
 	use({ "akinsho/toggleterm.nvim", tag = "*" })
+
+	-- use({
+	-- 	"ryanmsnyder/toggleterm-manager.nvim",
+	-- 	requires = {
+	-- 		"akinsho/toggleterm.nvim",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 		"nvim-lua/plenary.nvim", -- only needed because it's a dependency of telescope
+	-- 	},
+	-- })
 
 	use({
 		"stevearc/conform.nvim",
@@ -89,13 +109,6 @@ return require("packer").startup(function(use)
 		opts = {
 			-- add any custom options here
 		},
-	})
-
-	use({
-		"stevearc/oil.nvim",
-		config = function()
-			require("oil").setup()
-		end,
 	})
 
 	use({
@@ -143,17 +156,16 @@ return require("packer").startup(function(use)
 		},
 	})
 
-	use({
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
-	})
+	-- use({
+	-- 	"folke/trouble.nvim",
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- 	opts = {
+	-- 		-- your configuration comes here
+	-- 		-- or leave it empty to use the default settings
+	-- 		-- refer to the configuration section below
+	-- 	},
+	-- })
 
-	use({ "aquasecurity/vim-trivy" })
 	use({
 		"ggandor/leap.nvim",
 		requires = {
@@ -209,8 +221,7 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/playground")
 
 	use("mbbill/undotree")
-	use("tpope/vim-fugitive")
-	-- use('rcarriga/nvim-notify')
+	-- use("tpope/vim-fugitive")
 
 	use("ray-x/go.nvim")
 	use("ray-x/guihua.lua") -- recommended if need floating window support

@@ -1,0 +1,26 @@
+-- local function close_nvim_tree()
+-- 	require('neo-tree').close()
+-- end
+--
+-- local function open_nvim_tree()
+-- 	require('neo-tree').open()
+-- end
+--
+-- require("auto-session").setup {
+-- 	log_level = "error",
+-- 	auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+-- 	-- pre_save_cmds = { close_nvim_tree },
+-- 	-- post_save_cmds = { open_nvim_tree },
+-- 	-- post_open_cmds = { open_nvim_tree },
+-- 	-- post_restore_cmds = { open_nvim_tree },
+-- 	-- cwd_change_handling = {
+-- 	-- 	restore_upcoming_session = true,
+-- 	-- 	pre_cwd_changed_hook = close_nvim_tree,
+-- 	-- 	post_cwd_changed_hook = open_nvim_tree,
+-- 	-- },
+-- }
+--
+-- vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+-- vim.keymap.set("n", "<Leader>ls", require("auto-session.session-lens").search_session, {
+-- 	noremap = true,
+-- })
