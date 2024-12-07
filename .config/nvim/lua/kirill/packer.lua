@@ -15,6 +15,25 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use({
+		'saghen/blink.cmp',
+		tag = 'v0.7.3',
+		requires = {
+			{ 'rafamadriz/friendly-snippets' }
+		},
+	})
+
+	use({
+		'mfussenegger/nvim-dap',
+		requires = {
+			'rcarriga/nvim-dap-ui',
+			'leoluz/nvim-dap-go',
+			'mfussenegger/nvim-dap-python'
+		},
+	})
+
+	use { "nvim-neotest/nvim-nio" }
+
 	-- use({
 	-- 	"ThePrimeagen/harpoon",
 	-- 	branch = "harpoon2",
@@ -42,10 +61,11 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use "luukvbaal/statuscol.nvim"
 	use "github/copilot.vim"
 	use {
 		"CopilotC-Nvim/CopilotChat.nvim",
-		branch = "canary",
+		branch = "main",
 		requires = {
 			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
 			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
@@ -237,8 +257,8 @@ return require("packer").startup(function(use)
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" },
 			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
+			-- { "hrsh7th/nvim-cmp" },
+			-- { "hrsh7th/cmp-nvim-lsp" },
 			{ "L3MON4D3/LuaSnip" },
 		},
 	})

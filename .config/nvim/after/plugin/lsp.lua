@@ -3,7 +3,7 @@ local km, l, api = vim.keymap.set, vim.lsp, vim.api
 lsp.extend_lspconfig()
 
 local lspconfig = require("lspconfig")
-local cmp = require("cmp")
+-- local cmp = require("cmp")
 
 lspconfig.intelephense.setup({})
 lspconfig.terraformls.setup({})
@@ -42,28 +42,28 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	end,
 })
 
-cmp.setup({
-	preselect = "item",
-	completion = {
-		completeopt = "menu,menuone,noinsert",
-	},
-	mapping = cmp.mapping.preset.insert({
-		["<CR>"] = cmp.mapping.confirm({ select = false }),
-	}),
-})
+-- cmp.setup({
+-- 	preselect = "item",
+-- 	completion = {
+-- 		completeopt = "menu,menuone,noinsert",
+-- 	},
+-- 	mapping = cmp.mapping.preset.insert({
+-- 		["<CR>"] = cmp.mapping.confirm({ select = false }),
+-- 	}),
+-- })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lspconfig.gopls.setup({
-	capabilities = capabilities,
-	settings = {
-		gopls = {
-			analyses = {
-				unusedparams = true,
-			},
-			staticcheck = true,
-			gofumpt = true,
-		},
-	},
-})
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- lspconfig.gopls.setup({
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		gopls = {
+-- 			analyses = {
+-- 				unusedparams = true,
+-- 			},
+-- 			staticcheck = true,
+-- 			gofumpt = true,
+-- 		},
+-- 	},
+-- }
 
 lsp.setup()
