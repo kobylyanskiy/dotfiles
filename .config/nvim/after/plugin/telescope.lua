@@ -12,11 +12,6 @@ vim.keymap.set("n", "<leader>ps", function()
 end)
 
 vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep_args<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>giw",
-	":Telescope live_grep_args default_text=<c-r>=expand('<cword>')<CR><CR>", { noremap = true })
-
-vim.api.nvim_set_keymap("n", "<leader>ga", ":Git fetch --all<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>grom", ":Git rebase origin/master<CR>", { noremap = true })
 
 local focus_preview = function(prompt_bufnr)
 	local action_state = require("telescope.actions.state")

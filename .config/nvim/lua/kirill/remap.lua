@@ -23,7 +23,6 @@ vim.keymap.set("n", "<leader>rf", ":Neotree reveal<CR>", {})
 vim.keymap.set("n", "<leader>doc", "<Cmd>GoDoc<CR>", { silent = true })
 vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
 
-vim.keymap.set("n", "<leader>gs", "<Cmd>Telescope git_status<CR>")
 -- vim.keymap.set("n", "<leader>bl", "<Cmd>GitBlameToggle <CR>")
 vim.keymap.set("n", "<leader>v", "<Cmd>vsplit <CR><Cmd>Telescope find_files<CR>")
 vim.keymap.set("n", "<leader>h", "<Cmd>split <CR>")

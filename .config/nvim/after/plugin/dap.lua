@@ -11,13 +11,16 @@ require("dap-python").setup("python3")
 -- 	args = { "-m", "debugpy.adapter" },
 -- }
 
+vim.fn.sign_define("DapBreakpoint", { text = "⬢", texthl = "Yellow", linehl = "", numhl = "Yellow" })
+vim.fn.sign_define("DapStopped", { text = "▶", texthl = "Green", linehl = "ColorColumn", numhl = "Green" })
+
 dap.configurations.go = {
 	{
 		type = "go",
 		name = "Debug",
 		request = "launch",
-		showLog = false,
-		program = "${file}",
+		showLog = true,
+		program = "github.com/collectai/iam/cmd/iam",
 		dlvToolPath = vim.fn.exepath("dlv"), -- Adjust to where delve is installed
 	},
 }
