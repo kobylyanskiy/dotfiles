@@ -16,23 +16,32 @@ return require("packer").startup(function(use)
 	})
 
 	use({
-		'saghen/blink.cmp',
-		tag = 'v0.7.3',
+		"A7lavinraj/assistant.nvim",
+		requires = { "stevearc/dressing.nvim" }, -- optional but recommended
+		-- keys = {
+		-- 	{ "<leader>a", "<cmd>AssistantToggle<cr>", desc = "Toggle Assistant.nvim window" },
+		-- },
+		-- opts = {},
+	})
+
+	use({
+		"saghen/blink.cmp",
+		tag = "v0.7.3",
 		requires = {
-			{ 'rafamadriz/friendly-snippets' }
+			{ "rafamadriz/friendly-snippets" },
 		},
 	})
 
 	use({
-		'mfussenegger/nvim-dap',
+		"mfussenegger/nvim-dap",
 		requires = {
-			'rcarriga/nvim-dap-ui',
-			'leoluz/nvim-dap-go',
-			'mfussenegger/nvim-dap-python'
+			"rcarriga/nvim-dap-ui",
+			"leoluz/nvim-dap-go",
+			"mfussenegger/nvim-dap-python",
 		},
 	})
 
-	use { "nvim-neotest/nvim-nio" }
+	use({ "nvim-neotest/nvim-nio" })
 
 	-- use({
 	-- 	"ThePrimeagen/harpoon",
@@ -42,8 +51,11 @@ return require("packer").startup(function(use)
 
 	use({ "stevearc/dressing.nvim" })
 	use({ "OXY2DEV/helpview.nvim" })
-	use { 'nvim-telescope/telescope-ui-select.nvim' }
-	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
+	use({ "nvim-telescope/telescope-ui-select.nvim" })
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+	})
 
 	-- use({
 	-- 	"rmagatti/auto-session",
@@ -61,9 +73,9 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use "luukvbaal/statuscol.nvim"
-	use "github/copilot.vim"
-	use {
+	use("luukvbaal/statuscol.nvim")
+	use("github/copilot.vim")
+	use({
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
 		requires = {
@@ -75,7 +87,7 @@ return require("packer").startup(function(use)
 			-- See Configuration section for rest
 		},
 		-- See Commands section for default commands if you want to lazy load on them
-	}
+	})
 
 	use({
 		"nvim-telescope/telescope.nvim",
