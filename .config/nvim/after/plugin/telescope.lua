@@ -55,6 +55,15 @@ telescope.setup({
 		border = true,
 		borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
 		color_devicons = true,
+		mappings = {
+			n = {
+				['<c-d>'] = require('telescope.actions').delete_buffer
+			}, -- n
+			i = {
+				["<C-h>"] = "which_key",
+				['<c-d>'] = require('telescope.actions').delete_buffer
+			} -- i
+		} -- mappings
 	},
 	pickers = {
 		live_grep = {

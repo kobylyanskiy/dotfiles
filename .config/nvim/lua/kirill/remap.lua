@@ -17,8 +17,9 @@ vim.keymap.set("n", "<leader>8", "8gt")
 vim.keymap.set("n", "<leader>9", "9gt")
 vim.keymap.set("n", "<leader>0", ":tablast<cr>")
 
-vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>", { silent = true })
-vim.keymap.set("n", "<leader>rf", ":Neotree reveal<CR>", {})
+vim.keymap.set("n", "<leader>e", require("oil").toggle_float, { desc = "Toggle floating file explorer" })
+-- vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>rf", ":Neotree reveal<CR>", {})
 
 vim.keymap.set("n", "<leader>doc", "<Cmd>GoDoc<CR>", { silent = true })
 vim.keymap.set("n", "<leader>z", vim.cmd.ZenMode)
@@ -39,3 +40,9 @@ vim.keymap.set("n", "<leader>a", ":AerialToggle<CR>")
 
 -- vim.api.nvim_set_keymap('n', '<CR>', '<cmd>FineCmdline<CR>', { noremap = true })
 -- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
+
+
+vim.api.nvim_create_autocmd("BufNewFile", {
+	pattern = "/Users/kirill/Documents/codeforces/*.py",
+	command = "0r /Users/kirill/Documents/codeforces/template.py",
+})

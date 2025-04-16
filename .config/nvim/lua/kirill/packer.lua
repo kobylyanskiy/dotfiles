@@ -15,14 +15,14 @@ return require("packer").startup(function(use)
 		end,
 	})
 
-	use({
-		"A7lavinraj/assistant.nvim",
-		requires = { "stevearc/dressing.nvim" }, -- optional but recommended
-		-- keys = {
-		-- 	{ "<leader>a", "<cmd>AssistantToggle<cr>", desc = "Toggle Assistant.nvim window" },
-		-- },
-		-- opts = {},
-	})
+	-- use({
+	-- 	"A7lavinraj/assistant.nvim",
+	-- 	requires = { "stevearc/dressing.nvim" }, -- optional but recommended
+	-- 	-- keys = {
+	-- 	-- 	{ "<leader>a", "<cmd>AssistantToggle<cr>", desc = "Toggle Assistant.nvim window" },
+	-- 	-- },
+	-- 	-- opts = {},
+	-- })
 
 	use({
 		"saghen/blink.cmp",
@@ -32,14 +32,14 @@ return require("packer").startup(function(use)
 		},
 	})
 
-	use({
-		"mfussenegger/nvim-dap",
-		requires = {
-			"rcarriga/nvim-dap-ui",
-			"leoluz/nvim-dap-go",
-			"mfussenegger/nvim-dap-python",
-		},
-	})
+	-- use({
+	-- 	"mfussenegger/nvim-dap",
+	-- 	requires = {
+	-- 		"rcarriga/nvim-dap-ui",
+	-- 		"leoluz/nvim-dap-go",
+	-- 		"mfussenegger/nvim-dap-python",
+	-- 	},
+	-- })
 
 	use({ "nvim-neotest/nvim-nio" })
 
@@ -52,9 +52,10 @@ return require("packer").startup(function(use)
 	use({ "stevearc/dressing.nvim" })
 	use({ "OXY2DEV/helpview.nvim" })
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
+
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
+		run = "make",
 	})
 
 	-- use({
@@ -75,19 +76,19 @@ return require("packer").startup(function(use)
 
 	use("luukvbaal/statuscol.nvim")
 	use("github/copilot.vim")
-	use({
-		"CopilotC-Nvim/CopilotChat.nvim",
-		branch = "main",
-		requires = {
-			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-		},
-		opts = {
-			debug = true, -- Enable debugging
-			-- See Configuration section for rest
-		},
-		-- See Commands section for default commands if you want to lazy load on them
-	})
+	-- use({
+	-- 	"CopilotC-Nvim/CopilotChat.nvim",
+	-- 	branch = "main",
+	-- 	requires = {
+	-- 		{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+	-- 		{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+	-- 	},
+	-- 	opts = {
+	-- 		debug = true, -- Enable debugging
+	-- 		-- See Configuration section for rest
+	-- 	},
+	-- 	-- See Commands section for default commands if you want to lazy load on them
+	-- })
 
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -156,22 +157,32 @@ return require("packer").startup(function(use)
 
 	use("nvim-tree/nvim-web-devicons")
 
-	use({
-		"kristijanhusak/vim-dadbod-ui",
-		requires = { "tpope/vim-dadbod" },
-	})
+	-- use({
+	-- 	"kristijanhusak/vim-dadbod-ui",
+	-- 	requires = { "tpope/vim-dadbod" },
+	-- })
 
 	use({
 		"ibhagwan/fzf-lua",
 		requires = { "nvim-tree/nvim-web-devicons" },
 	})
 
-	-- use {
-	--   'VonHeikemen/fine-cmdline.nvim',
-	--   requires = {
-	--     {'MunifTanjim/nui.nvim'}
-	--   }
-	-- }
+	use {
+		'VonHeikemen/fine-cmdline.nvim',
+		requires = {
+			{ 'MunifTanjim/nui.nvim' }
+		}
+	}
+
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
+	})
 
 	-- lazy.nvim
 	use({
@@ -219,18 +230,18 @@ return require("packer").startup(function(use)
 		requires = "nvim-treesitter/nvim-treesitter",
 	})
 
-	use({
-		"folke/which-key.nvim",
-		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 1000
-			require("which-key").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
-		end,
-	})
+	-- use({
+	-- 	"folke/which-key.nvim",
+	-- 	config = function()
+	-- 		vim.o.timeout = true
+	-- 		vim.o.timeoutlen = 1000
+	-- 		require("which-key").setup({
+	-- 			-- your configuration comes here
+	-- 			-- or leave it empty to use the default settings
+	-- 			-- refer to the configuration section below
+	-- 		})
+	-- 	end,
+	-- })
 
 	use({
 		"stevearc/aerial.nvim",
@@ -239,15 +250,22 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+
+	-- use({
+	-- 	"nvim-neo-tree/neo-tree.nvim",
+	-- 	branch = "v3.x",
+	-- 	requires = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+	-- 	},
+	-- })
 	use({
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		},
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup()
+		end,
 	})
 
 	use("nvim-treesitter/playground")
