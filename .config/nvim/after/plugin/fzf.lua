@@ -1,1 +1,1 @@
-require("fzf-lua").setup({"fzf-vim"})
+-- require("fzf-lua").setup({"fzf-vim"})

@@ -13,5 +13,5 @@
 -- 	},
 -- 	use_lsp_diagnostic_signs = true
 -- }
---
+
 -- vim.keymap.set("n", "<leader>xx", '<Cmd>Trouble diagnostics toggle<CR>', {silent = true})
