@@ -13,9 +13,6 @@ vim.keymap.set("n", "<leader>h", "<Cmd>split <CR>")
 
 vim.keymap.set("n", "<leader>a", ":AerialToggle<CR>")
 
--- vim.api.nvim_set_keymap("n", "<CR>", "<cmd>FineCmdline<CR>", { noremap = true })
--- vim.api.nvim_set_keymap("n", ":", "<cmd>FineCmdline<CR>", { noremap = true })
-
 vim.api.nvim_create_autocmd("BufNewFile", {
 	pattern = "/Users/kirill/Documents/codeforces/*.py",
 	command = "0r /Users/kirill/Documents/codeforces/template.py",
