@@ -7,7 +7,7 @@ vim.keymap.set("n", "<Down>", "<nop>")
 
 vim.keymap.set("n", "<leader>doc", "<Cmd>GoDoc<CR>", { silent = true })
 
--- vim.keymap.set("n", "<leader>bl", "<Cmd>GitBlameToggle <CR>")
+vim.keymap.set("n", "<leader>t", "<Cmd>GitBlameToggle<CR>")
 vim.keymap.set("n", "<leader>v", "<Cmd>vsplit <CR><Cmd>Telescope find_files<CR>")
 vim.keymap.set("n", "<leader>h", "<Cmd>split <CR>")
 
