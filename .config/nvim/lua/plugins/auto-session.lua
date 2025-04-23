@@ -1,0 +1,13 @@
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
+return {
+	{
+		"rmagatti/auto-session",
+		opts = {
+			auto_restore = true,
+			auto_save = true,
+			log_level = "info",
+			suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+		},
+	},
+}
