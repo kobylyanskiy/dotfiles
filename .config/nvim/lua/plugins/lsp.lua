@@ -8,10 +8,10 @@ return {
 		{ "williamboman/mason-lspconfig.nvim" },
 
 		-- Optional
-		{ "hrsh7th/nvim-cmp" },
-		{ "hrsh7th/cmp-nvim-lsp" },
+		-- { "hrsh7th/nvim-cmp" },
+		-- { "hrsh7th/cmp-nvim-lsp" },
 		{ "ray-x/lsp_signature.nvim" },
-		{ "jose-elias-alvarez/null-ls.nvim", lazy = true }, -- если вдруг
+		{ "jose-elias-alvarez/null-ls.nvim", lazy = true },
 	},
 	config = function()
 		local lsp = require("lsp-zero")

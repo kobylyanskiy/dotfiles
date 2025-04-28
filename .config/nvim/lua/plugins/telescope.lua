@@ -67,6 +67,10 @@ local setup = function()
 			find_files = {
 				hidden = true,
 			},
+			oldfiles = {
+				sort_lastused = true,
+				only_cwd = true,
+			},
 		},
 		fzf = {
 			fuzzy = true, -- false will only do exact matching

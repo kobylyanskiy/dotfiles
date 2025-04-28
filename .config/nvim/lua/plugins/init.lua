@@ -1,5 +1,6 @@
 return {
 	"nvim-neotest/nvim-nio",
+	"AndrewRadev/sideways.vim",
 	"stevearc/dressing.nvim",
 	"OXY2DEV/helpview.nvim",
 	"nvim-telescope/telescope-ui-select.nvim",
@@ -20,6 +21,20 @@ return {
 			require("quicker").setup()
 		end,
 	},
+
+	-- {
+	-- 	"goolord/alpha-nvim",
+	-- 	config = function()
+	-- 		require("alpha").setup(require("alpha.themes.dashboard").config)
+	-- 	end,
+	-- },
+	-- {
+	-- 	"goolord/alpha-nvim",
+	-- 	dependencies = { "echasnovski/mini.icons" },
+	-- 	config = function()
+	-- 		require("alpha").setup(require("alpha.themes.startify").config)
+	-- 	end,
+	-- },
 
 	{
 		"stevearc/conform.nvim",
@@ -43,20 +58,6 @@ return {
 			})
 		end,
 	},
-
-	-- {
-	-- 	"folke/noice.nvim",
-	-- 	opts = {
-	-- 		-- add any options here
-	-- 	},
-	-- 	dependencies = {
-	-- 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		-- OPTIONAL:
-	-- 		--   `nvim-notify` is only needed, if you want to use the notification view.
-	-- 		--   If not available, we use `mini` as the fallback
-	-- 	},
-	-- },
 
 	{
 		"ggandor/leap.nvim",
