@@ -31,10 +31,10 @@ return {
 			dashboard.section.buttons.val = {
 				dashboard.button("f", "🔍 Find file", ":Telescope find_files<CR>"),
 				dashboard.button("r", "🕘 Recent files", ":Telescope oldfiles<CR>"),
-				dashboard.button("q", "🚪 Quit", ":qa<CR>"),
 				dashboard.button("e", "📄 Oil", function()
 					require("oil").toggle_float()
 				end),
+				dashboard.button("q", "🚪 Quit", ":qa<CR>"),
 			}
 
 			dashboard.section.footer.opts.hl = "Constant"

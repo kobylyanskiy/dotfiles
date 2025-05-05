@@ -152,6 +152,18 @@ return {
 				"<cmd>Telescope live_grep_args<CR>",
 				desc = "Live grep (args)",
 			},
+			{
+				"<leader>v",
+				"<cmd>Telescope find_files<CR>",
+				desc = "Find files",
+			},
+			{
+				"<leader>h",
+				"<Cmd>split <CR>",
+				desc = "Split",
+			},
+			-- vim.keymap.set("n", "<leader>v", "<Cmd>vsplit <CR><Cmd>Telescope find_files<CR>")
+			-- vim.keymap.set("n", "<leader>h", "<Cmd>split <CR>")
 		},
 	},
 	{

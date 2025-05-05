@@ -22,20 +22,6 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	"goolord/alpha-nvim",
-	-- 	config = function()
-	-- 		require("alpha").setup(require("alpha.themes.dashboard").config)
-	-- 	end,
-	-- },
-	-- {
-	-- 	"goolord/alpha-nvim",
-	-- 	dependencies = { "echasnovski/mini.icons" },
-	-- 	config = function()
-	-- 		require("alpha").setup(require("alpha.themes.startify").config)
-	-- 	end,
-	-- },
-
 	{
 		"stevearc/conform.nvim",
 		config = function()
@@ -71,13 +57,16 @@ return {
 		config = function()
 			require("aerial").setup()
 		end,
+		keys = {
+			{ "<leader>a", "<cmd>AerialToggle<cr>", desc = "Aerial" },
+		},
 	},
 
 	{
 		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
+		-- config = function()
+		-- 	require("Comment").setup()
+		-- end,
 	},
 
 	-- use("tpope/vim-fugitive")
