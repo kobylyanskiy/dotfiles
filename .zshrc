@@ -86,3 +86,4 @@ source <(kubectl completion zsh)
 #   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/3.4.0/bin:$PATH"
+export KUBE_EDITOR=nvim
