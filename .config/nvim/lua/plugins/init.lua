@@ -23,6 +23,13 @@ return {
 	},
 
 	{
+		"m4xshen/hardtime.nvim",
+		lazy = false,
+		dependencies = { "MunifTanjim/nui.nvim" },
+		opts = {},
+	},
+
+	{
 		"stevearc/conform.nvim",
 		config = function()
 			require("conform").setup()
