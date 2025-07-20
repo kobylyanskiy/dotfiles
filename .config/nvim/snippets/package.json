@@ -1,0 +1,29 @@
+{
+	"name": "example-snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"all"
+				],
+				"path": "./snippets/all.json"
+			},
+			{
+				"language": [
+					"lua"
+				],
+				"path": "./lua.json"
+			},
+			{
+				"language": [
+					"go"
+				],
+				"path": "./snippets/go.json"
+			},
+			{
+				"language": "Terraform",
+				"path": "./snippets/terraform.json"
+			}
+		]
+	}
+}
