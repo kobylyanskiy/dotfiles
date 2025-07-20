@@ -33,3 +33,5 @@ vim.opt.colorcolumn = ""
 vim.opt.clipboard = "unnamed"
 
 vim.opt.splitright = true
+
+vim.opt.mouse = "a"

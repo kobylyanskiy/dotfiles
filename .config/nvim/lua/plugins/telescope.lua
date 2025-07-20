@@ -29,7 +29,7 @@ local setup = function()
 				"--smart-case",
 				"-uu", -- **This is the setting not being respected**
 			},
-			file_ignore_patterns = { "node_modules", ".git", ".cache", ".terraform", "venv" },
+			file_ignore_patterns = { "node_modules", ".git/.*", ".cache", ".terraform", "venv" },
 			layout_config = {
 				horizontal = {
 					prompt_position = "top",
@@ -52,6 +52,7 @@ local setup = function()
 				i = {
 					["<C-h>"] = "which_key",
 					["<c-d>"] = require("telescope.actions").delete_buffer,
+          ["<esc>"] = actions.close,
 				}, -- i
 			}, -- mappings
 		},
@@ -152,17 +153,17 @@ return {
 				"<cmd>Telescope live_grep_args<CR>",
 				desc = "Live grep (args)",
 			},
-			{
-				"<leader>v",
-				"<cmd>Telescope find_files<CR>",
-				desc = "Find files",
-			},
+			-- {
+			-- 	"<leader>v",
+			-- 	"<cmd>Telescope find_files<CR>",
+			-- 	desc = "Find files",
+			-- },
 			{
 				"<leader>h",
 				"<Cmd>split <CR>",
 				desc = "Split",
 			},
-			-- vim.keymap.set("n", "<leader>v", "<Cmd>vsplit <CR><Cmd>Telescope find_files<CR>")
+			vim.keymap.set("n", "<leader>v", "<Cmd>vsplit <CR><Cmd>Telescope find_files<CR>")
 			-- vim.keymap.set("n", "<leader>h", "<Cmd>split <CR>")
 		},
 	},

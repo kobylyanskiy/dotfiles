@@ -19,7 +19,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # add in snippets
-zinit snippet OMZP::git
+# zinit snippet OMZP::git
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::aws
 
@@ -40,7 +40,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
 --color=selected-bg:#494d64 \
 --multi"
-source <(fzf --zsh)
+# source <(fzf --zsh)
 # eval "$(logcli --completion-script-zsh)"
 
 # zoxide
@@ -54,10 +54,13 @@ alias dc=docker-compose
 alias vim=nvim
 alias lzd=lazydocker
 alias ls='ls --color'
+alias vimdiff='nvim -d'
 
 # general settings
+export CLICOLOR=1
+export TERM=xterm-256color
 export LANG=en_US.UTF-8
-export COLORTERM=truecolor
+# export COLORTERM=truecolor
 bindkey -e
 export K9S_CONFIG_DIR="/Users/kirill/.config/k9s"
 export AWS_PROFILE_STATE_ENABLE=true
@@ -69,6 +72,9 @@ export PATH="$PATH:/Users/kirill/.local/bin"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$PATH:/Users/kirill/Documents/tr/infrastructure/bin"
 
 # history
 HISTFILE=~/.zsh_history
@@ -87,3 +93,8 @@ source <(kubectl completion zsh)
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/3.4.0/bin:$PATH"
 export KUBE_EDITOR=nvim
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/kirill/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+eval "$(logcli --completion-script-zsh)"

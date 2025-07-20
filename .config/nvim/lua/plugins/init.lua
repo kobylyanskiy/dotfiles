@@ -26,7 +26,15 @@ return {
 		"m4xshen/hardtime.nvim",
 		lazy = false,
 		dependencies = { "MunifTanjim/nui.nvim" },
-		opts = {},
+    opts = {
+      disable_mouse = false,
+      disabled_keys = {
+        ["<Up>"] = {},
+        ["<Down>"] = {},
+        ["<Left>"] = {},
+        ["<Right>"] = {},
+      },
+    },
 	},
 
 	{
@@ -58,6 +66,8 @@ return {
 			"tpope/vim-repeat",
 		},
 	},
+
+  { 'echasnovski/mini.nvim', version = '*' },
 
 	{
 		"stevearc/aerial.nvim",
