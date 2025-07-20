@@ -1,7 +1,7 @@
 return {
 	"saghen/blink.cmp",
 	version = "1.x",
-	dependencies = { "rafamadriz/friendly-snippets" },
+  dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
 
 	opts = {
 		-- highlight = {
@@ -13,7 +13,7 @@ return {
 		-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 		-- adjusts spacing to ensure icons are aligned
 
-		keymap = { preset = "default" },
+		keymap = { preset = "super-tab" },
 		appearance = {
 			nerd_font_variant = "normal",
 			use_nvim_cmp_as_default = true,
@@ -22,6 +22,8 @@ return {
 		-- keymap = {
 		-- 	accept = '<C-y>',
 		-- }
+
+    snippets = { preset = 'luasnip' },
 
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
