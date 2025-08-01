@@ -27,37 +27,12 @@ vim.keymap.set("n", "<C-l>", ":SidewaysRight<CR>")
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- vim.api.nvim_create_autocmd("VimEnter", {
--- 	callback = function()
--- 		-- local argc = vim.fn.argc()
--- 		local argv = vim.fn.argv()
--- 		if #argv == 0 then
--- 			-- No file passed to nvim: open Telescope
--- 			vim.cmd("silent! lua require('telescope.builtin').oldfiles()")
--- 		elseif #argv == 1 and vim.fn.isdirectory(argv[1]) == 1 then
--- 			-- Opened with `nvim .` or a directory
--- 			-- vim.cmd("cd " .. argv[1]) -- Change working directory
--- 			vim.cmd("silent! lua require('telescope.builtin').oldfiles()")
--- 		end
--- 		-- If file/dir passed, do nothing (nvim handles it)
--- 	end,
--- })
+-- diable snacks_animate
+vim.g.snacks_animate = false
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "jsonnet" },
   callback = function()
     vim.b.autoformat = false
-  end,
-})
-
-vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = '*',
-  callback = function()
-    vim.schedule(function()
-      if vim.api.nvim_buf_get_option(0, 'filetype') == 'TelescopePrompt' then
-        vim.keymap.set('i', '<esc><esc>', '') -- avoid E31 error
-        vim.keymap.del('i', '<esc><esc>')
-      end
-    end)
   end,
 })

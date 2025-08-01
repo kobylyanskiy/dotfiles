@@ -46,19 +46,6 @@ return {
 					indentscope_color = "",
 				},
 			},
-			custom_highlights = function()
-				return {
-					TelescopeNormal = { bg = "#181825" },
-					TelescopeBorder = { bg = "#181825" },
-					TelescopePromptPrefix = { bg = "#313244" },
-					TelescopePromptNormal = { bg = "#313244" },
-					TelescopePromptBorder = { bg = "#313244" },
-					TelescopePromptTitle = { bg = "#eba0ac", fg = "#181825", bold = true },
-					TelescopePromptCounter = { bg = "#313244" },
-					TelescopeResultsTitle = { bg = "#181825", fg = "#181825" },
-					TelescopePreviewTitle = { bg = "#a6e3a1", fg = "#181825", bold = true },
-				}
-			end,
 		})
 
 		vim.cmd.colorscheme("catppuccin")

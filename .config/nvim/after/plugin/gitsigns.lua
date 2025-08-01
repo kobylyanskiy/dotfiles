@@ -98,8 +98,3 @@ require("gitsigns").setup({
 		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
 	end,
 })
-
-require("gitblame").setup({
-	--Note how the `gitblame_` prefix is omitted in `setup`
-	enabled = false,
-})
