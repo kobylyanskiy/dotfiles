@@ -75,6 +75,8 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="$PATH:/Users/kirill/Documents/tr/infrastructure/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 # history
 HISTFILE=~/.zsh_history
