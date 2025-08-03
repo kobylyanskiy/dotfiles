@@ -4,7 +4,6 @@ return { -- language support
 		vim.lsp.config("*", {})
 		vim.lsp.enable({
 			"gopls",
-			"jdtls",
 			"kotlin_language_server",
 			"lua_ls",
 			"ruff",
@@ -12,7 +11,6 @@ return { -- language support
 			"ts_ls",
 			"terraformls",
 			"bashls",
-			"yamlls",
 		})
 	end,
 }
