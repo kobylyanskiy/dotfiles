@@ -2,8 +2,6 @@ return {
 	"nvim-neotest/nvim-nio",
 	"AndrewRadev/sideways.vim",
 	"OXY2DEV/helpview.nvim",
-	-- "ray-x/go.nvim",
-	-- "ray-x/guihua.lua", -- recommended if need floating window support
 	"ntpeters/vim-better-whitespace",
 	"lewis6991/gitsigns.nvim",
 	"luukvbaal/statuscol.nvim",
@@ -11,6 +9,7 @@ return {
 	"lukas-reineke/indent-blankline.nvim",
 	"catppuccin/nvim",
 	"numToStr/Comment.nvim",
+	"RRethy/nvim-treesitter-textsubjects",
 
 	{
 		"stevearc/quicker.nvim",
