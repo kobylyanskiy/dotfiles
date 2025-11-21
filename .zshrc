@@ -6,8 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+[ ! -d "$ZINIT_HOME" ] && mkdir -p "$(dirname "$ZINIT_HOME")"
+[ ! -d "$ZINIT_HOME"/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
 
@@ -95,8 +95,25 @@ source <(kubectl completion zsh)
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="$HOME/.gem/ruby/3.4.0/bin:$PATH"
 export KUBE_EDITOR=nvim
+export EDITOR=nvim
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/kirill/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 eval "$(logcli --completion-script-zsh)"
+
+source /Users/kirill/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kirill/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kirill/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kirill/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kirill/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd" || exit
+	rm -f -- "$tmp"
+}
