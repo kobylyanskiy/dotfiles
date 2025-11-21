@@ -20,12 +20,6 @@ return {
 	},
 
 	{
-		-- config = function()
-		-- 	require("conform").setup()
-		-- end,
-	},
-
-	{
 		"kylechui/nvim-surround",
 		version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
@@ -44,14 +38,4 @@ return {
 	},
 
 	{ "echasnovski/mini.nvim", version = "*" },
-
-	{
-		"stevearc/aerial.nvim",
-		config = function()
-			require("aerial").setup()
-		end,
-		keys = {
-			{ "<leader>a", "<cmd>AerialToggle<cr>", desc = "Aerial" },
-		},
-	},
 }
