@@ -19,7 +19,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # add in snippets
-# zinit snippet OMZP::git
+zinit snippet OMZP::git
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::aws
 
@@ -34,12 +34,21 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # fzf & completion
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+# --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+# --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+# --color=selected-bg:#494d64 \
+# --multi"
+
+# latte
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
---color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
---color=selected-bg:#494d64 \
---multi"
+--color=bg+:#CCD0DA,bg:#EFF1F5,spinner:#DC8A78,hl:#D20F39 \
+--color=fg:#4C4F69,header:#D20F39,info:#8839EF,pointer:#DC8A78 \
+--color=marker:#7287FD,fg+:#4C4F69,prompt:#8839EF,hl+:#D20F39 \
+--color=selected-bg:#BCC0CC \
+--color=border:#9CA0B0,label:#4C4F69"
+
 # source <(fzf --zsh)
 # eval "$(logcli --completion-script-zsh)"
 

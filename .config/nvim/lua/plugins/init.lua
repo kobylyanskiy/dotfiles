@@ -10,6 +10,7 @@ return {
 	"catppuccin/nvim",
 	"numToStr/Comment.nvim",
 	"RRethy/nvim-treesitter-textsubjects",
+	"stevearc/conform.nvim",
 
 	{
 		"stevearc/quicker.nvim",
@@ -19,7 +20,6 @@ return {
 	},
 
 	{
-		"stevearc/conform.nvim",
 		-- config = function()
 		-- 	require("conform").setup()
 		-- end,

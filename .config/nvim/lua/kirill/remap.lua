@@ -31,8 +31,10 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.snacks_animate = false
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "jsonnet" },
-  callback = function()
-    vim.b.autoformat = false
-  end,
+	pattern = { "jsonnet" },
+	callback = function()
+		vim.b.autoformat = false
+	end,
 })
+
+vim.keymap.set("n", "<leader>doc", "<Cmd>GoDoc<CR>", { silent = true })
