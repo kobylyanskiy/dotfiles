@@ -1,4 +1,4 @@
-require("leap").create_default_mappings()
+require("leap")
 
 local colors = {
 	blue = "#80a0ff",
@@ -9,6 +9,9 @@ local colors = {
 	violet = "#d183e8",
 	grey = "#303030",
 }
+
+vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap)")
+vim.keymap.set("n", "S", "<Plug>(leap-from-window)")
 
 vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" }) -- or some grey
 vim.api.nvim_set_hl(0, "LeapMatch", {

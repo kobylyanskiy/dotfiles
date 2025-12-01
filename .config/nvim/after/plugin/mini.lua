@@ -1,4 +1,8 @@
-require("mini.files").setup()
+require("mini.files").setup({
+	options = {
+		use_as_default_explorer = false,
+	},
+})
 
 vim.keymap.set("n", "-", function()
 	local buf_name = vim.api.nvim_buf_get_name(0)
@@ -7,4 +11,4 @@ vim.keymap.set("n", "-", function()
 	MiniFiles.reveal_cwd()
 end, { desc = "Open Mini Files" })
 
-require("mini.pick").setup({})
+-- require("mini.pick").setup({})
