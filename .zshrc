@@ -77,7 +77,7 @@ alias vimdiff='nvim -d'
 export CLICOLOR=1
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
-# export COLORTERM=truecolor
+export COLORTERM=truecolor
 bindkey -e
 export K9S_CONFIG_DIR="/Users/kirill/.config/k9s"
 export AWS_PROFILE_STATE_ENABLE=true
@@ -119,7 +119,7 @@ export PATH="/Users/kirill/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 eval "$(logcli --completion-script-zsh)"
 
-source /Users/kirill/.docker/init-zsh.sh || true # Added by Docker Desktop
+# source /Users/kirill/.docker/init-zsh.sh || true # Added by Docker Desktop
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/kirill/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kirill/Downloads/google-cloud-sdk/path.zsh.inc'; fi
