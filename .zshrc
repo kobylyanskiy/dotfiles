@@ -101,11 +101,11 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 
 # ------------
-# eval "$(zoxide init --cmd cd zsh)"
-# function y() {
-# 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-# 	yazi "$@" --cwd-file="$tmp"
-# 	IFS= read -r -d '' cwd < "$tmp"
-# 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd" || exit
-# 	rm -f -- "$tmp"
-# }
+eval "$(zoxide init --cmd cd zsh)"
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd" || exit
+	rm -f -- "$tmp"
+}
