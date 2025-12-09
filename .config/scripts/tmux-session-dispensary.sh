@@ -1,12 +1,7 @@
 #!/bin/bash
 
-DIRS=(
-	"$HOME/documents/tr"
-	"$HOME/documents/opensource/"
-)
-
-selected=$(fd . "${DIRS[@]}" --type=dir --max-depth=1 --full-path |
-	sed "s|^$HOME/||" |
+selected=$(fd . "$HOME/documents" --type=dir --max-depth=2 --min-depth=2 --full-path |
+	sed "s|^$HOME/documents/||" |
 	sk --margin 10% --color="bw")
 [[ $selected ]] && selected="$HOME/$selected"
 
