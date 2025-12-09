@@ -1,3 +1,6 @@
 require("marks").setup({
-	builtin_marks = { "<", ">", "^" },
+	builtin_marks = { "<", ">" },
+	mappings = {
+		annotate = "m/",
+	},
 })
