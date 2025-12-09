@@ -2,6 +2,10 @@ require("mini.files").setup({
 	options = {
 		use_as_default_explorer = false,
 	},
+	mappings = {
+		go_in = "L",
+		go_in_plus = "l",
+	},
 })
 
 vim.keymap.set("n", "-", function()
@@ -10,5 +14,3 @@ vim.keymap.set("n", "-", function()
 	MiniFiles.open(path)
 	MiniFiles.reveal_cwd()
 end, { desc = "Open Mini Files" })
-
--- require("mini.pick").setup({})
