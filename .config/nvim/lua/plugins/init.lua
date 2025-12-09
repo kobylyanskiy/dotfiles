@@ -7,7 +7,6 @@ return {
 	"luukvbaal/statuscol.nvim",
 	"nvim-tree/nvim-web-devicons",
 	"lukas-reineke/indent-blankline.nvim",
-	"catppuccin/nvim",
 	"numToStr/Comment.nvim",
 	"RRethy/nvim-treesitter-textsubjects",
 	"stevearc/conform.nvim",

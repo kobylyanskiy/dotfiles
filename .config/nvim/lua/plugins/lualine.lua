@@ -3,11 +3,11 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
 	config = function()
 		local colors = {
-			bg = "#202328",
+			bg = "#141415",
 			fg = "#bbc2cf",
 			yellow = "#ECBE7B",
 			cyan = "#008080",
-			darkblue = "#081633",
+			-- darkblue = "#081633",
 			green = "#98be65",
 			orange = "#FF8800",
 			violet = "#a9a1e1",
@@ -35,8 +35,8 @@ return {
 				component_separators = "",
 				section_separators = "",
 				theme = {
-					normal = { c = { fg = colors.fg } },
-					inactive = { c = { fg = colors.fg } },
+					normal = { c = { fg = colors.fg, bg = colors.bg } },
+					inactive = { c = { fg = colors.fg, bg = colors.bg } },
 				},
 			},
 			sections = {
