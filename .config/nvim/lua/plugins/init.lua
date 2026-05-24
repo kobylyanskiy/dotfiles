@@ -10,6 +10,7 @@ return {
 	"numToStr/Comment.nvim",
 	"RRethy/nvim-treesitter-textsubjects",
 	"stevearc/conform.nvim",
+	"towolf/vim-helm",
 
 	{
 		"stevearc/quicker.nvim",

@@ -23,6 +23,11 @@ vim.keymap.set("n", "<C-k>", ":cprev<CR>")
 vim.keymap.set("n", "<C-h>", ":SidewaysLeft<CR>")
 vim.keymap.set("n", "<C-l>", ":SidewaysRight<CR>")
 
+-- copy relative path
+vim.keymap.set("n", "<leader>cp", function()
+	vim.fn.setreg("+", vim.fn.expand("%"))
+end, { desc = "Copy relative path" })
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
