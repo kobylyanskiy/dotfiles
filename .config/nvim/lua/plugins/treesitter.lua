@@ -5,20 +5,11 @@ return {
 		ts_update()
 	end,
 	dependencies = {
+		-- Kept ONLY for its textobjects query files (@function.outer, etc).
+		-- Its Lua runtime is frozen/broken on Neovim 0.12, so we never call its
+		-- setup or keymaps — mini.ai (after/plugin/mini.lua) reads these queries
+		-- directly via the safe vim.treesitter API.
 		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
-	opts = {
-		ensure_installed = {
-			"go",
-			"javascript",
-			"typescript",
-			"python",
-			"terraform",
-			"c",
-			"lua",
-			"vim",
-			"vimdoc",
-			"query",
-		},
-	},
+	-- Configuration lives in after/plugin/treesitter.lua (single configs.setup call).
 }

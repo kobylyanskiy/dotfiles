@@ -1,14 +1,8 @@
 return {
-	"nvim-neotest/nvim-nio",
-	"AndrewRadev/sideways.vim",
 	"OXY2DEV/helpview.nvim",
-	"ntpeters/vim-better-whitespace",
 	"lewis6991/gitsigns.nvim",
 	"luukvbaal/statuscol.nvim",
 	"nvim-tree/nvim-web-devicons",
-	"lukas-reineke/indent-blankline.nvim",
-	"numToStr/Comment.nvim",
-	"RRethy/nvim-treesitter-textsubjects",
 	"stevearc/conform.nvim",
 	"towolf/vim-helm",
 
@@ -31,10 +25,20 @@ return {
 	},
 
 	{
-		"ggandor/leap.nvim",
+		url = "https://codeberg.org/andyg/leap.nvim",
 		dependencies = {
 			"tpope/vim-repeat",
 		},
+		keys = {
+			{ "s", "<Plug>(leap)", mode = { "n", "x", "o" }, desc = "Leap" },
+			{ "S", "<Plug>(leap-from-window)", desc = "Leap from window" },
+		},
+		config = function()
+			require("leap")
+			vim.api.nvim_set_hl(0, "LeapBackdrop", { link = "Comment" })
+			vim.api.nvim_set_hl(0, "LeapMatch", { fg = "black", bg = "white", bold = true, nocombine = true })
+			vim.api.nvim_set_hl(0, "LeapLabel", { fg = "#080808", bg = "#ff5189" })
+		end,
 	},
 
 	{ "echasnovski/mini.nvim", version = "*" },

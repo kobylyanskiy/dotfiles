@@ -15,18 +15,35 @@ vim.api.nvim_create_autocmd("BufNewFile", {
 
 vim.keymap.set("n", "ycc", "yygccp", { remap = true })
 
--- quick fix
-vim.keymap.set("n", "<C-j>", ":cnext<CR>")
-vim.keymap.set("n", "<C-k>", ":cprev<CR>")
+-- quick fix (C-j/C-k are taken by vim-tmux-navigator, so use bracket pairs)
+vim.keymap.set("n", "]q", ":cnext<CR>", { silent = true, desc = "Next quickfix" })
+vim.keymap.set("n", "[q", ":cprev<CR>", { silent = true, desc = "Prev quickfix" })
 
--- sideways
-vim.keymap.set("n", "<C-h>", ":SidewaysLeft<CR>")
-vim.keymap.set("n", "<C-l>", ":SidewaysRight<CR>")
-
--- copy relative path
-vim.keymap.set("n", "<leader>cp", function()
+-- yank relative path (moved off <leader>cp so c* is the Claude group)
+vim.keymap.set("n", "<leader>yp", function()
 	vim.fn.setreg("+", vim.fn.expand("%"))
-end, { desc = "Copy relative path" })
+end, { desc = "Yank relative path" })
+
+-- Highlight trailing whitespace (replaces vim-better-whitespace).
+-- Guard to real file windows so it never paints popups/floats (e.g. blink's menu).
+vim.api.nvim_set_hl(0, "ExtraWhitespace", { bg = "#ff5189" })
+vim.api.nvim_create_autocmd({ "BufWinEnter", "InsertLeave" }, {
+	callback = function()
+		if vim.fn.win_gettype() == "" and vim.bo.buftype == "" then
+			vim.cmd([[match ExtraWhitespace /\s\+$/]])
+		end
+	end,
+})
+
+-- No gutter (sign/fold/number) symbols in terminal buffers
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function()
+		vim.opt_local.signcolumn = "no"
+		vim.opt_local.foldcolumn = "0"
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+	end,
+})
 
 -- Disable netrw
 vim.g.loaded_netrw = 1
@@ -41,5 +58,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.b.autoformat = false
 	end,
 })
-
-vim.keymap.set("n", "<leader>doc", "<Cmd>GoDoc<CR>", { silent = true })

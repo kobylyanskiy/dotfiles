@@ -1,7 +1,8 @@
 return {
 	"saghen/blink.cmp",
 	version = "1.x",
-  dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+	event = { "InsertEnter", "CmdlineEnter" }, -- lazy-load (also defers LuaSnip dep)
+	dependencies = { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
 
 	opts = {
 		-- highlight = {
@@ -23,7 +24,7 @@ return {
 		-- 	accept = '<C-y>',
 		-- }
 
-    snippets = { preset = 'luasnip' },
+		snippets = { preset = "luasnip" },
 
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
