@@ -4,6 +4,7 @@ alias d=docker
 alias dc=docker-compose
 alias vim=nvim
 alias lzd=lazydocker
+alias tf=terraform
 alias ls='eza'
 alias vimdiff='nvim -d'
 alias kdebug='kubectl run debug-$USER -n monitoring --rm -it --image=nicolaka/netshoot --overrides="$(cat ~/.zsh/netshoot-overrides.json)"'
