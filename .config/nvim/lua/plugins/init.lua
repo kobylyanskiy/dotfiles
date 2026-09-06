@@ -5,7 +5,6 @@ return {
 	"nvim-tree/nvim-web-devicons",
 	"stevearc/conform.nvim",
 	"towolf/vim-helm",
-	"monaqa/dial.nvim",
 
 	{
 		"stevearc/quicker.nvim",
