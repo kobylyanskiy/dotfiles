@@ -1,5 +1,18 @@
 return {
 	"smjonas/inc-rename.nvim",
+	cmd = "IncRename",
+	keys = {
+		{
+			"<leader>rn",
+			function()
+				-- require() here forces the load before the cmdline opens,
+				-- so the live preview is available on the first press.
+				return ":" .. require("inc_rename").config.cmd_name .. " " .. vim.fn.expand("<cword>")
+			end,
+			expr = true,
+			desc = "Rename",
+		},
+	},
 	opts = {
 		cmd_name = "IncRename",
 		-- the highlight group used for highlighting the identifier's new name
