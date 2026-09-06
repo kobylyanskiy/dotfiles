@@ -10,6 +10,11 @@ require("conform").setup({
 		terraform = { "terraform_fmt" },
 		yaml = { "yamlfmt" },
 	},
+	formatters = {
+		yamlfmt = {
+			prepend_args = { "-formatter", "retain_line_breaks_single=true" },
+		},
+	},
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {

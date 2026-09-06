@@ -1,20 +1,12 @@
 return {
 	"folke/sidekick.nvim",
 	opts = {
-		nes = { enabled = false }, -- Next Edit Suggestions need the Copilot LSP; off for now
 		cli = {
-			win = {
-				layout = "right", -- open Claude in a right-side split
-				split = { width = 0.4 }, -- 40% of the editor width
-				-- Window keymaps use sidekick's defaults: in terminal mode <c-q>
-				-- enters normal mode (to scroll), then <c-q>/`q` hides it.
-			},
 			mux = {
 				backend = "tmux",
-				enabled = true, -- persist CLI sessions in tmux across nvim restarts
-			},
-			prompts = {
-				refactor = "Refactor {this} for maintainability",
+				enabled = true,
+				create = "split", -- run Claude in a real tmux pane, not an nvim terminal
+				split = { vertical = true, size = 0.4 }, -- side-by-side, Claude on the right at 40%
 			},
 		},
 	},

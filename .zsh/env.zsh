@@ -24,6 +24,7 @@ export K9S_CONFIG_DIR="/Users/kirill/.config/k9s"
 export AWS_PROFILE_STATE_ENABLE=true
 export KUBE_EDITOR=nvim
 export EDITOR=nvim
+export MANPAGER='nvim +Man!'
 
 # history
 HISTFILE=~/.zsh_history
