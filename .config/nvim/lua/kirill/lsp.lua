@@ -71,7 +71,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<Leader>lh", function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
     keymap("n", "<Leader>li", vim.cmd.LspInfo, opt("LspInfo"))
     keymap("n", "<Leader>ll", lsp.codelens.run, opt("Run CodeLens"))
-    keymap("n", "<Leader>lr", lsp.buf.rename, opt("Rename"))
     keymap("n", "<Leader>ls", lsp.buf.document_symbol, opt("Doument Symbols"))
 
     -- diagnostic mappings

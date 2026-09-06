@@ -15,11 +15,10 @@ require("conform").setup({
 			prepend_args = { "-formatter", "retain_line_breaks_single=true" },
 		},
 	},
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
+	format_on_save = function(bufnr)
+		if vim.b[bufnr].autoformat == false or vim.g.autoformat == false then
+			return
+		end
+		return { timeout_ms = 500 }
 	end,
 })
