@@ -1,0 +1,17 @@
+{
+  "spec": {
+    "containers": [
+      {
+        "name": "debug",
+        "image": "nicolaka/netshoot",
+        "stdin": true,
+        "tty": true,
+        "command": ["/bin/bash"],
+        "resources": {
+          "requests": {"cpu": "10m", "memory": "64Mi"},
+          "limits": {"cpu": "100m", "memory": "256Mi"}
+        }
+      }
+    ]
+  }
+}
