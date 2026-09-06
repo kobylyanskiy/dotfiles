@@ -61,10 +61,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gy", lsp.buf.type_definition, opt("Go to type definition"))
     keymap("n", "gr", lsp.buf.references, opt("Show References"))
     keymap("n", "gl", vim.diagnostic.open_float, opt("Open diagnostic in float"))
-    keymap("n", "<C-k>", lsp.buf.signature_help, opts)
     -- disable the default binding first before using a custom one
     pcall(vim.keymap.del, "n", "K", { buffer = ev.buf })
     keymap("n", "K", function() lsp.buf.hover({ border = "single", max_height = 30, max_width = 120 }) end, opt("Toggle hover"))
+    -- gK pairs with K; <C-k> stays with vim-tmux-navigator
+    keymap("n", "gK", function() lsp.buf.signature_help({ border = "single" }) end, opt("Signature help"))
     keymap("n", "<Leader>lS", lsp.buf.workspace_symbol, opt("Workspace Symbols"))
     keymap("n", "<Leader>la", lsp.buf.code_action, opt("Code Action"))
     keymap("n", "<Leader>lh", function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
