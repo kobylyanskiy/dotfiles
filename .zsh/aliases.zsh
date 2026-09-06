@@ -4,7 +4,7 @@ alias d=docker
 alias dc=docker-compose
 alias vim=nvim
 alias lzd=lazydocker
-alias ls='ls --color'
+alias ls='eza'
 alias vimdiff='nvim -d'
 alias kdebug='kubectl run debug-$USER -n monitoring --rm -it --image=nicolaka/netshoot --overrides="$(cat ~/.zsh/netshoot-overrides.json)"'
 alias relogin='KUBECONFIG="fakefile" tsh logout && tsh --proxy=teleport.internal.corp.traderepublic.com:443 --auth okta login'
