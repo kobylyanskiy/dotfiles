@@ -2,7 +2,18 @@ return {
 	"saghen/blink.cmp",
 	version = "1.x",
 	event = { "InsertEnter", "CmdlineEnter" }, -- lazy-load (also defers LuaSnip dep)
-	dependencies = { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+	dependencies = {
+		{
+			"L3MON4D3/LuaSnip",
+			version = "v2.*",
+			build = "make install_jsregexp",
+			config = function()
+				require("luasnip.loaders.from_vscode").lazy_load({
+					paths = { vim.fn.stdpath("config") .. "/snippets" },
+				})
+			end,
+		},
+	},
 
 	opts = {
 		-- highlight = {

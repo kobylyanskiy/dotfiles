@@ -1,17 +1,7 @@
 return {
-	"OXY2DEV/helpview.nvim",
-	"lewis6991/gitsigns.nvim",
-	"luukvbaal/statuscol.nvim",
-	"nvim-tree/nvim-web-devicons",
-	"stevearc/conform.nvim",
+	{ "OXY2DEV/helpview.nvim", ft = "help" },
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	"towolf/vim-helm",
-
-	{
-		"stevearc/quicker.nvim",
-		config = function()
-			require("quicker").setup()
-		end,
-	},
 
 	{
 		"kylechui/nvim-surround",
