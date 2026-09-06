@@ -58,3 +58,24 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.b.autoformat = false
 	end,
 })
+
+-- `nvim <dir>` opens the most recently edited file from that directory instead
+-- of the explorer. Registered before lazy loads, so it runs ahead of
+-- mini.files' own BufEnter hook, which then sees a file buffer and stands down.
+-- Falls through to mini.files when the directory has no known recent file.
+vim.api.nvim_create_autocmd("BufEnter", {
+	once = true,
+	nested = true,
+	callback = function(ev)
+		if vim.v.vim_did_enter == 1 or vim.fn.isdirectory(ev.file) ~= 1 then
+			return
+		end
+		local dir = vim.fn.fnamemodify(ev.file, ":p")
+		for _, f in ipairs(vim.v.oldfiles or {}) do
+			if vim.startswith(f, dir) and vim.fn.filereadable(f) == 1 then
+				vim.cmd.edit(vim.fn.fnameescape(f))
+				return
+			end
+		end
+	end,
+})
