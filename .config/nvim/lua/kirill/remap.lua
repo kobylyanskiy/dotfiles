@@ -59,6 +59,19 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
+-- Jump to where you last were in the file (shada keeps the `"` mark).
+vim.api.nvim_create_autocmd("BufReadPost", {
+	callback = function(ev)
+		if vim.bo[ev.buf].buftype ~= "" or vim.api.nvim_buf_get_name(ev.buf):match("COMMIT_EDITMSG$") then
+			return
+		end
+		local mark = vim.api.nvim_buf_get_mark(ev.buf, '"')
+		if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(ev.buf) then
+			pcall(vim.api.nvim_win_set_cursor, 0, mark)
+		end
+	end,
+})
+
 -- `nvim <dir>` opens the most recently edited file from that directory instead
 -- of the explorer. Registered before lazy loads, so it runs ahead of
 -- mini.files' own BufEnter hook, which then sees a file buffer and stands down.
