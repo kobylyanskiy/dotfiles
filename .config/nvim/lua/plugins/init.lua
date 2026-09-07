@@ -13,6 +13,4 @@ return {
 			})
 		end,
 	},
-
-	{ "echasnovski/mini.nvim", version = "*" },
 }

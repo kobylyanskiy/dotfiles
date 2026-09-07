@@ -2,6 +2,8 @@ return {
 	"echasnovski/mini.nvim",
 	version = "*",
 	config = function()
+		require("mini.misc").setup_restore_cursor()
+
 		require("mini.files").setup({
 			options = {
 				use_as_default_explorer = true,
