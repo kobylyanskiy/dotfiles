@@ -1,0 +1,49 @@
+{
+	"question heading": {
+		"prefix": "q",
+		"body": "## ${1:what symptom am I looking at}?\n\n$0",
+		"description": "Heading phrased as the question you would search for"
+	},
+	"claim note": {
+		"prefix": "claim",
+		"body": [
+			"# ${1:the claim, stated as a sentence}",
+			"",
+			"$2",
+			"",
+			"In our stack: ${3:how this shows up in Mimir / VM / k8s}",
+			"",
+			"Up: [[${4:hub}]] · #${5:tag}"
+		],
+		"description": "Atomic note: one claim, one bridge to our stack, one link up"
+	},
+	"runbook entry": {
+		"prefix": "rb",
+		"body": ["## ${1:when do I need this}?", "", "```${2:promql}", "$3", "```", "", "$0"],
+		"description": "Cookbook entry keyed by the question, not the tool"
+	},
+	"hub": {
+		"prefix": "hub",
+		"body": [
+			"# 🧭 ${1:topic}",
+			"",
+			"## Contents",
+			"- [[$2]]",
+			"- ${3:next thing to write} 🚧",
+			"",
+			"## Open questions",
+			"- ${4:question} 🚧"
+		],
+		"description": "Hub note with a table of contents and explicit gaps"
+	},
+	"flashcard": {
+		"prefix": "qa",
+		"body": ["Q: ${1:question}", "A: ${2:answer}", "", "$0"],
+		"description": "Anki-bound question/answer pair"
+	},
+	"link up": {
+		"prefix": "up",
+		"body": "Up: [[${1:hub}]]",
+		"description": "Link back to the owning hub"
+	}
+}
