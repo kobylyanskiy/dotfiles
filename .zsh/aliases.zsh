@@ -26,6 +26,7 @@ jmine() { acli jira workitem search --jql "assignee = currentUser() AND statusCa
 jrel() {
 	local key="${1:?usage: jrel PTECH-1234}"
 	local chain=("Backlog" "To Do" "In Progress" "In Review" "Ready for QA" "QA Passed" "Ready for Release")
+	local terminal=("Ready for Release" "Released" "Done" "Closed" "Resolved" "Won't Do" "Cancelled")
 
 	local start
 	start=$(acli jira workitem search --jql "key = $key" --fields status --json |
@@ -33,8 +34,8 @@ jrel() {
 
 	echo "current: $start"
 
-	if [[ "$start" == "${chain[-1]}" ]]; then
-		echo "already at ${chain[-1]}"
+	if [[ " ${terminal[*]} " == *" $start "* ]]; then
+		echo "already $start — nothing to do"
 		return 0
 	fi
 
