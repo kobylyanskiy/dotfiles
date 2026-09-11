@@ -23,6 +23,12 @@
 			{
 				"language": "Terraform",
 				"path": "./snippets/terraform.json"
+			},
+			{
+				"language": [
+					"markdown"
+				],
+				"path": "./snippets/markdown.json"
 			}
 		]
 	}
