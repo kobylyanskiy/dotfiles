@@ -1,30 +1,46 @@
 return {
-	"epwalsh/obsidian.nvim",
-	version = "*", -- recommended, use latest release instead of latest commit
-	lazy = true,
+	"obsidian-nvim/obsidian.nvim",
+	version = "*",
 	ft = "markdown",
-	-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-	-- event = {
-	--   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-	--   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-	--   -- refer to `:h file-pattern` for more examples
-	--   "BufReadPre path/to/my-vault/*.md",
-	--   "BufNewFile path/to/my-vault/*.md",
-	-- },
-	dependencies = {
-		-- Required.
-		"nvim-lua/plenary.nvim",
-
-		-- see below for full list of optional dependencies 👇
-	},
+	dependencies = { "nvim-lua/plenary.nvim" },
+	---@module 'obsidian'
+	---@type obsidian.config
 	opts = {
+		legacy_commands = false,
 		workspaces = {
-			{
-				name = "personal",
-				path = "/Users/kirill/documents/projects/notes/Software Architecture",
-			},
+			{ name = "notes", path = "~/documents/projects/notes" },
 		},
-
-		-- see below for full list of options 👇
+		notes_subdir = "01 - Unsorted",
+		new_notes_location = "notes_subdir",
+		daily_notes = {
+			folder = "02 - Daily",
+			date_format = "%Y-%m-%d",
+			workdays_only = false,
+		},
+		picker = { name = "snacks.pick" },
+		completion = { min_chars = 2 },
+		footer = { enabled = false },
+		ui = { enable = false },
+	},
+	keys = {
+		{ "<leader>oo", "<cmd>Obsidian quick_switch<cr>", desc = "Open note" },
+		{ "<leader>on", "<cmd>Obsidian new<cr>", desc = "New note" },
+		{ "<leader>oN", "<cmd>Obsidian new_from_template<cr>", desc = "New from template" },
+		{ "<leader>os", "<cmd>Obsidian search<cr>", desc = "Search vault" },
+		{ "<leader>ot", "<cmd>Obsidian tags<cr>", desc = "Tags" },
+		{ "<leader>oj", "<cmd>Obsidian today<cr>", desc = "Today" },
+		{ "<leader>oy", "<cmd>Obsidian yesterday<cr>", desc = "Yesterday" },
+		{ "<leader>oJ", "<cmd>Obsidian dailies<cr>", desc = "Dailies" },
+		{ "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Backlinks" },
+		{ "<leader>ol", "<cmd>Obsidian links<cr>", desc = "Links in note" },
+		{ "<leader>oc", "<cmd>Obsidian toc<cr>", desc = "Table of contents" },
+		{ "<leader>or", "<cmd>Obsidian rename<cr>", desc = "Rename note" },
+		{ "<leader>op", "<cmd>Obsidian paste_img<cr>", desc = "Paste image" },
+		{ "<leader>ox", "<cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle checkbox" },
+		{ "<leader>oO", "<cmd>Obsidian open<cr>", desc = "Open in Obsidian app" },
+		{ "<leader>ow", "<cmd>Obsidian workspace<cr>", desc = "Switch workspace" },
+		{ "<leader>ol", "<cmd>Obsidian link<cr>", desc = "Link selection", mode = "v" },
+		{ "<leader>oL", "<cmd>Obsidian link_new<cr>", desc = "Link to new note", mode = "v" },
+		{ "<leader>oe", "<cmd>Obsidian extract_note<cr>", desc = "Extract to note", mode = "v" },
 	},
 }

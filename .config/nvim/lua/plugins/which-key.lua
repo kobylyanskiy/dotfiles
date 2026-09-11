@@ -10,6 +10,7 @@ return {
 			{ "<leader>s", group = "search" },
 			{ "<leader>d", group = "diagnostics" },
 			{ "<leader>l", group = "lsp" },
+			{ "<leader>o", group = "obsidian" },
 			{ "<leader>u", group = "ui/toggles" },
 		},
 	},
