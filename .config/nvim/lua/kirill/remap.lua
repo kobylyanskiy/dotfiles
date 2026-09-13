@@ -74,6 +74,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		for _, f in ipairs(vim.v.oldfiles or {}) do
 			if vim.startswith(f, dir) and vim.fn.filereadable(f) == 1 then
 				vim.cmd.edit(vim.fn.fnameescape(f))
+				vim.api.nvim_buf_delete(ev.buf, { force = true })
 				return
 			end
 		end

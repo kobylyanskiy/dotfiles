@@ -1,0 +1,7 @@
+{
+	"resources": {
+		"prefix": "res",
+		"body": "resources:\n  requests: {cpu: \"${1:2}\", memory: ${2:6Gi}}\n  limits: {cpu: \"$1\", memory: $2}",
+		"description": "Snippet for k8s resource requests & limits"
+	}
+}

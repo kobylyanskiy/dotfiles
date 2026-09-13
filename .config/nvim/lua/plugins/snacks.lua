@@ -37,8 +37,15 @@ return {
 			formatters = {
 				file = {
 					filename_first = false,
-					truncate = 120,
+					truncate = "left",
+					min_width = 200,
 				},
+			},
+			sources = {
+				smart = { filter = { cwd = true }, layout = { preview = false } },
+				recent = { filter = { cwd = true } },
+				buffers = { filter = { cwd = true } },
+				files = { layout = { preview = false } },
 			},
 			win = {
 				input = {
@@ -132,7 +139,7 @@ return {
 		},
 		-- git
 		{
-			"<leader>gb",
+			"<leader>gB",
 			function()
 				Snacks.picker.git_branches()
 			end,
@@ -179,6 +186,27 @@ return {
 				Snacks.picker.git_log_file()
 			end,
 			desc = "Git Log File",
+		},
+		{
+			"<leader>gb",
+			function()
+				Snacks.git.blame_line({ env = { GIT_PAGER = "cat" } })
+			end,
+			desc = "Git Blame Line",
+		},
+		{
+			"<leader>gp",
+			function()
+				Snacks.picker.gh_pr()
+			end,
+			desc = "GitHub Pull Requests",
+		},
+		{
+			"<leader>gi",
+			function()
+				Snacks.picker.gh_issue()
+			end,
+			desc = "GitHub Issues",
 		},
 		-- Grep
 		{
@@ -417,9 +445,18 @@ return {
 			desc = "Rename File",
 		},
 		{
-			"<leader>gB",
+			"<leader>go",
 			function()
-				Snacks.gitbrowse()
+				local dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
+				local function git(...)
+					local out = vim.fn.systemlist({ "git", "-C", dir ~= "" and dir or vim.fn.getcwd(), ... })
+					return vim.v.shell_error == 0 and vim.trim(out[1] or "") or ""
+				end
+				local ref = git("rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}")
+				if ref == "" then
+					ref = git("symbolic-ref", "--short", "refs/remotes/origin/HEAD")
+				end
+				Snacks.gitbrowse({ branch = ref ~= "" and ref:gsub("^[^/]+/", "") or nil })
 			end,
 			desc = "Git Browse",
 			mode = { "n", "v" },

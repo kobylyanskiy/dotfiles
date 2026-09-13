@@ -1,7 +1,7 @@
 return {
 	"saghen/blink.cmp",
 	version = "1.x",
-	event = { "InsertEnter", "CmdlineEnter" }, -- lazy-load (also defers LuaSnip dep)
+	event = "VeryLazy",
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",

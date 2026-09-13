@@ -29,6 +29,12 @@
 					"markdown"
 				],
 				"path": "./snippets/markdown.json"
+			},
+			{
+				"language": [
+					"yaml"
+				],
+				"path": "./snippets/yaml.json"
 			}
 		]
 	}

@@ -29,6 +29,35 @@ return {
 			},
 		})
 
+		local markdown_prefix = function(prefix)
+			return function(buf_id)
+				if vim.bo[buf_id].filetype ~= "markdown" then
+					return nil
+				end
+				return prefix
+			end
+		end
+
+		local hipatterns = require("mini.hipatterns")
+		hipatterns.setup({
+			highlighters = {
+				todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
+				question = {
+					pattern = markdown_prefix("^Q:"),
+					group = "",
+					extmark_opts = { line_hl_group = "MiniHipatternsFlashcard" },
+				},
+				answer = {
+					pattern = markdown_prefix("^A:"),
+					group = "",
+					extmark_opts = { line_hl_group = "MiniHipatternsFlashcard" },
+				},
+			},
+		})
+
+		vim.api.nvim_set_hl(0, "MiniHipatternsFlashcard", { bg = "#252530" })
+		vim.api.nvim_set_hl(0, "MiniHipatternsTodo", { bg = "#d8647e", fg = "#141415", bold = true })
+
 		vim.keymap.set("n", "-", function()
 			local buf_name = vim.api.nvim_buf_get_name(0)
 			local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()

@@ -50,6 +50,7 @@ return {
 			"typescript",
 			"python",
 			"terraform",
+			"promql",
 			"c",
 			"lua",
 			"vim",
