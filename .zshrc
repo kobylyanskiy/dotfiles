@@ -60,7 +60,7 @@ z4h install ohmyzsh/ohmyzsh || return
 z4h init || return
 
 # Extend PATH.
-path=(~/bin $path)
+path=(~/bin ~/.zvm/bin ~/.zvm/self $path)
 
 # Export environment variables.
 export GPG_TTY=$TTY
@@ -68,6 +68,8 @@ export GPG_TTY=$TTY
 # Source additional local files if they exist.
 z4h source ~/.zsh/env.zsh
 z4h source ~/.zsh/aliases.zsh
+z4h source ~/.zsh/tmux-jobs.zsh
+eval "$(atuin init zsh --disable-up-arrow)"
 
 z4h load ohmyzsh/ohmyzsh/plugins/git
 

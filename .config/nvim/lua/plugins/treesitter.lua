@@ -51,6 +51,7 @@ return {
 			"python",
 			"terraform",
 			"promql",
+			"swift",
 			"c",
 			"lua",
 			"vim",
@@ -72,6 +73,49 @@ return {
 		-- textobjects (af/if/ac/ic, ...) are handled by mini.ai in after/plugin/mini.lua
 	},
 	config = function(_, opts)
+		-- nvim-treesitter master invokes `tree-sitter generate --no-bindings` for grammars
+		-- marked requires_generate_from_grammar; that flag is gone in tree-sitter CLI >=0.25.
+		-- Point swift at the upstream tag that ships pre-generated sources instead.
+		require("nvim-treesitter.parsers").get_parser_configs().swift.install_info = {
+			url = "https://github.com/alex-pinkus/tree-sitter-swift",
+			revision = "0.7.3-with-generated-files",
+			files = { "src/parser.c", "src/scanner.c" },
+			requires_generate_from_grammar = false,
+		}
+		-- That tag is newer than the grammar nvim-treesitter's bundled swift queries were
+		-- written against, so they name tokens the parser no longer has and the whole
+		-- highlighter aborts. Drop unknown tokens until the query compiles. Registered
+		-- before setup() so it runs ahead of nvim-treesitter's own FileType handler.
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "swift",
+			once = true,
+			callback = function()
+				local query = vim.treesitter.query
+				local lines = {}
+				for _, file in ipairs(query.get_files("swift", "highlights")) do
+					vim.list_extend(lines, vim.fn.readfile(file))
+				end
+				local text = table.concat(lines, "\n")
+				local patched = false
+				for _ = 1, 32 do
+					local ok, err = pcall(query.parse, "swift", text)
+					if ok then
+						break
+					end
+					local token = tostring(err):match('Invalid node type "([^"]+)"')
+					if not token then
+						return
+					end
+					text = text:gsub('%s*"' .. vim.pesc(token) .. '"', "")
+					text = text:gsub("%[%s*%]%s*@[%w%._]+", "")
+					patched = true
+				end
+				if patched then
+					query.set("swift", "highlights", text)
+				end
+			end,
+		})
+
 		require("nvim-treesitter.configs").setup(opts)
 	end,
 }

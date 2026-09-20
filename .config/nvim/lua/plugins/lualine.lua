@@ -105,6 +105,13 @@ return {
 		ins_left({ "location" })
 
 		ins_left({
+			"aerial",
+			sep = " ❯ ",
+			color = { fg = colors.violet },
+			cond = conditions.hide_in_width,
+		})
+
+		ins_left({
 			"diagnostics",
 			sources = { "nvim_diagnostic" },
 			symbols = { error = " ", warn = " ", info = " " },

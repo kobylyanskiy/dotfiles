@@ -16,3 +16,7 @@ if ! tmux has-session -t "$selected_name"; then
 	tmux select-window -t "$selected_name:1"
 fi
 tmux switch-client -t "$selected_name"
+
+if tmux has-session -t 0; then
+	tmux kill-session -t 0
+fi

@@ -50,5 +50,12 @@ return {
 			end,
 			desc = "Claude: send diagnostics",
 		},
+		{
+			"<leader>cl",
+			function()
+				require("sidekick.cli").send({ msg = "{position}" })
+			end,
+			desc = "Claude: send cursor position",
+		},
 	},
 }

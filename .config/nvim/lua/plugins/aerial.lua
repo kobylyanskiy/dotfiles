@@ -6,5 +6,6 @@ return {
 	end,
 	keys = {
 		{ "<leader>A", "<cmd>AerialToggle<cr>", desc = "Aerial" },
+		{ "<leader>an", "<cmd>AerialNavToggle<cr>", desc = "Aerial nav" },
 	},
 }

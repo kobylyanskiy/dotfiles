@@ -18,10 +18,12 @@ return { -- language support
 			"lua_ls",
 			"ruff",
 			"rust_analyzer",
+			"sourcekit",
 			"ts_ls",
 			"terraformls",
 			"bashls",
 			"yamlls",
+			"zls",
 		})
 	end,
 }

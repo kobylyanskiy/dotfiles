@@ -58,6 +58,12 @@ jrel() {
 	done
 }
 
+jbr() {
+	local key=$(tmux display -p '#{@task}')
+	[[ -n $key && -n $1 ]] || { echo "usage: jbr <short-name>, task set via prefix-j"; return 1 }
+	git switch -c "$key-$1"
+}
+
 l1story() {
 	local sprint key
 	sprint=$(acli jira board list-sprints --id "6498" --state active --json |

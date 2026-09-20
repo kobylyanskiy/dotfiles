@@ -40,6 +40,7 @@ return {
 			template = "daily note.md",
 			default_tags = {},
 		},
+		checkbox = { order = { " ", "x" } },
 		picker = { name = "snacks.picker" },
 		completion = { min_chars = 2 },
 		footer = { enabled = false },

@@ -9,15 +9,13 @@ return {
 		explorer = { enabled = false },
 		indent = { enabled = false, animate = { enabled = false } },
 		input = { enabled = true },
-		notifier = {
-			enabled = false,
-			timeout = 3000,
-		},
+		notifier = { enabled = false },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
+		scratch = { ft = "markdown" },
 		scroll = { enabled = true },
 		statuscolumn = { enabled = false },
-		words = { enabled = false },
+		words = { enabled = true },
 		styles = {
 			notification = {
 				-- wo = { wrap = true } -- Wrap notifications
@@ -85,13 +83,6 @@ return {
 				Snacks.picker.command_history()
 			end,
 			desc = "Command History",
-		},
-		{
-			"<leader>n",
-			function()
-				Snacks.picker.notifications()
-			end,
-			desc = "Notification History",
 		},
 		-- { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
 		-- find
@@ -469,13 +460,6 @@ return {
 			desc = "Lazygit",
 		},
 		{
-			"<leader>un",
-			function()
-				Snacks.notifier.hide()
-			end,
-			desc = "Dismiss All Notifications",
-		},
-		{
 			"<c-/>",
 			function()
 				Snacks.terminal()
@@ -553,6 +537,15 @@ return {
 				Snacks.toggle.inlay_hints():map("<leader>uh")
 				Snacks.toggle.indent():map("<leader>ug")
 				Snacks.toggle.dim():map("<leader>uD")
+				Snacks.toggle({
+					name = "Auto Format",
+					get = function()
+						return vim.g.autoformat ~= false
+					end,
+					set = function(state)
+						vim.g.autoformat = state
+					end,
+				}):map("<leader>uf")
 			end,
 		})
 	end,

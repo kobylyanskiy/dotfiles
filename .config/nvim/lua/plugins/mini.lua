@@ -4,6 +4,20 @@ return {
 	config = function()
 		require("mini.misc").setup_restore_cursor()
 
+		require("mini.bracketed").setup({
+			comment = { suffix = "" },
+			quickfix = { suffix = "" },
+		})
+
+		require("mini.operators").setup({
+			exchange = { prefix = "gX" },
+			replace = { prefix = "gR" },
+		})
+
+		require("mini.splitjoin").setup()
+		require("mini.align").setup()
+		require("mini.move").setup()
+
 		require("mini.files").setup({
 			options = {
 				use_as_default_explorer = true,

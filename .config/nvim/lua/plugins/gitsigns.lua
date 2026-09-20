@@ -90,6 +90,9 @@ return {
 				gs.diffthis("~")
 			end, { desc = "Diff against last commit" })
 			map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle deleted lines" })
+			map("n", "<leader>hq", function()
+				gs.setqflist("all")
+			end, { desc = "All repo hunks to quickfix" })
 
 			-- Text object
 			map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select hunk" })
