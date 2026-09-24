@@ -6,9 +6,12 @@ autoload -Uz add-zsh-hook
 _tj_ignore=(nvim vim vimdiff k9s claude lazygit lazydocker yazi less man tuicr ssh tmux pgcli psql)
 
 _tj_preexec() {
-	(($_tj_ignore[(Ie)${${(z)2}[1]}])) && return 0
+	local -a w
+	w=(${(z)2})
+	(($_tj_ignore[(Ie)${w[1]}])) && return 0
+	w=(${(z)1})
 	_tj_start=$EPOCHSECONDS
-	_tj_cmd="${(j: :)${(z)1}[1,2]}"
+	_tj_cmd="${w[1,2]}"
 	tmux set -p -t "$TMUX_PANE" @job "▶ $_tj_start $_tj_cmd"
 }
 
