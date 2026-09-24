@@ -117,5 +117,21 @@ return {
 		})
 
 		require("nvim-treesitter.configs").setup(opts)
+
+		-- The first file is already read when lazy loads us on BufReadPost, so it misses
+		-- nvim-treesitter's FileType attach and ends up parsed without injections.
+		-- Deferred because that buffer has no filetype yet while config runs.
+		vim.schedule(function()
+			for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+				if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].filetype ~= "" then
+					vim.treesitter.stop(buf)
+					local ok, parser = pcall(vim.treesitter.get_parser, buf)
+					if ok and parser then
+						parser:destroy()
+					end
+					pcall(vim.treesitter.start, buf)
+				end
+			end
+		end)
 	end,
 }
