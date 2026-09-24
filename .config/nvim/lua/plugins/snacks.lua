@@ -17,6 +17,9 @@ return {
 		statuscolumn = { enabled = false },
 		words = { enabled = true },
 		styles = {
+			zen = {
+				backdrop = { transparent = false, blend = 99 },
+			},
 			notification = {
 				-- wo = { wrap = true } -- Wrap notifications
 			},
