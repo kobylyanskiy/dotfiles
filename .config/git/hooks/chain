@@ -1,0 +1,24 @@
+#!/bin/bash
+
+hook=$(basename "$0")
+local_hook="$(git rev-parse --path-format=absolute --git-common-dir)/hooks/$hook"
+if [[ -x $local_hook && ! $local_hook -ef $0 ]]; then
+	"$local_hook" "$@" || exit $?
+fi
+
+[[ $hook == commit-msg ]] || exit 0
+[[ $(git config --get remote.origin.url) == *traderepublic* ]] || exit 0
+
+key=$(tmux show -sv @task 2>/dev/null)
+[[ $key ]] || exit 0
+
+subject=$(head -n1 "$1")
+[[ $subject && $subject != \#* ]] || exit 0
+[[ $subject =~ ^[A-Z][A-Z0-9]+-[0-9]+ ]] && exit 0
+
+tmp=$(mktemp)
+{
+	printf '%s: %s\n' "$key" "$subject"
+	tail -n +2 "$1"
+} >"$tmp"
+mv "$tmp" "$1"
